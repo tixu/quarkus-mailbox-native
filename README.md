@@ -2,7 +2,9 @@
 This project aims to test  quarkus : more specifically
   - [X] Reactive Programming
   - [X] Rest Service
+  - [X] AMQP integration
   - [X] OpenTracing
+  - [ ] Test
   - [X] HealthChceck
   - [X] Metrics
   - [X] Openapi 
@@ -10,6 +12,12 @@ This project aims to test  quarkus : more specifically
   - [X] graalvm with custom libraries (no provided by quarkus)
   
 
-  # Component 
+  # Components
 
-  
+  The docker compose file will install the following components : 
+   - AMQP (message broker)
+   - H2 database (Relational Database)
+   - Minio (S3 implementation)
+
+
+
