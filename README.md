@@ -20,4 +20,16 @@ This project aims to test  quarkus : more specifically
    - Minio (S3 implementation)
 
 
+# Initial Set-up 
 
+The host machine must have the following components installed to be able to build the project
+ - openjdk
+ - Graalvm
+ - GCC 
+ - Zlib header
+ - Maven 
+
+The host machine must have 
+  - docker 
+  - docker-compose 
+to run the example
