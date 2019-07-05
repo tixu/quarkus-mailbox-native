@@ -33,3 +33,8 @@ The host machine must have
   - docker 
   - docker-compose 
 to run the example
+
+# Results
+
+Application start time : 0.144 s
+Application memory (RSS) : 68 Mb
