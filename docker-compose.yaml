@@ -1,0 +1,51 @@
+version: '2'
+
+# starts 4 docker containers running minio server instances. Each
+# minio server's web interface will be accessible on the host at port
+# 9001 through 9004.
+services:
+ minio1:
+  image: minio/minio:RELEASE.2019-06-19T18-24-42Z
+  volumes:
+   - .\minio\data:/data 
+   - .\minio\config:/root/.minio
+  ports:
+   - "9000:9000"
+  environment:
+   MINIO_ACCESS_KEY: 5KP6H37M13NJ9P1FRNXK
+   MINIO_SECRET_KEY: +4KUErb8mBYJRt3rwEcoRXxkWSoOuc12zNzn9gtm
+  command: server  /data
+
+  
+ jaeger: 
+     image: jaegertracing/all-in-one:latest
+     ports:
+       - "5775:5775/udp"
+       - "6831:6831/udp"
+       - "6832:6832/udp"
+       - "5778:5778"
+       - "16686:16686"
+       - "14268:14268"
+       - "9411:9411"
+ h2:
+    container_name: 'h2'
+    image: oscarfonts/h2
+    ports:
+      - "81:81"
+      - "1521:1521"
+    volumes:
+      - h2-data:/opt/h2-data
+ artemis:
+    image: vromero/activemq-artemis:2.8.0
+    environment:
+       - ENABLE_JMX_EXPORTER=true
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+      - "5672:5672"
+      - "9404:9404"
+    environment:
+      ARTEMIS_USERNAME: quarkus
+      ARTEMIS_PASSWORD: quarkus
+volumes:
+    h2-data:
